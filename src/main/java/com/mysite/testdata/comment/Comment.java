@@ -1,9 +1,7 @@
 package com.mysite.testdata.comment;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import com.mysite.testdata.post.Post;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,4 +26,7 @@ public class Comment {
 
     private LocalDateTime createDate;
     private LocalDateTime modifyDate;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Post post;
 }

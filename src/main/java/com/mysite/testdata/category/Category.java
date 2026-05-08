@@ -1,11 +1,11 @@
 package com.mysite.testdata.category;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import com.mysite.testdata.post.Post;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
@@ -19,4 +19,7 @@ public class Category {
 
     @Column(length = 100)
     private String name;
+
+    @OneToMany(mappedBy = "category")
+    private List<Post> post;
 }

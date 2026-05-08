@@ -1,12 +1,13 @@
 package com.mysite.testdata.member;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import com.mysite.testdata.like.Like;
+import com.mysite.testdata.post.Post;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
@@ -26,4 +27,9 @@ public class Member {
 
     private LocalDate createDate;
 
+    @OneToMany(mappedBy = "member", cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+    private List<Post> post;
+
+    @ManyToMany
+    private List<Like> like;
 }
